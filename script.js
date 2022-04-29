@@ -1,7 +1,10 @@
 /*
-**Milestone 1**
-Partendo dalla struttura dati fornita, visualizzare in pagina un box per ogni icona, in cui è presente il nome dell’icona e l’icona stessa.
-**Milestone 2**
+//1
+// creare array con oggetto card con icona e testo
+//creare funzione crea card
+//creare funzione stampa card
+
+**Milestone 2**FATTO
 Ciascuna icona ha una proprietà “color”: utilizzare questa proprietà per visualizzare le icone del colore corrispondente.
 **Milestone 3**
 Aggiungere alla pagina una select in cui le options corrispondono ai vari tipi di icone *(animal, vegetable, user)*. Quando l’utente seleziona un tipo dalla select, visualizzare solamente le icone corrispondenti.
@@ -10,64 +13,78 @@ Aggiungere alla pagina una select in cui le options corrispondono ai vari tipi d
 2- popolare le options della select della milestone 3 dinamicamente.
 */
 
-//1
-// creare array con oggetto card con icona e testo
-//creare funzione crea card
-//creare funzione stampa card
+
 
 
 
 const cardContainer =[
   {
     text: 'cat',
+    color: 'blue' 
   },
   {
     text: 'crow',
+    color: 'blue'
   },
   {
     text: 'dog',
+    color: 'blue'
   },
   {
     text: 'dragon',
+    color: 'blue'
   },
   {
     text: 'horse',
+    color: 'blue'
   },
   {
     text: 'hippo',
+    color: 'blue'
   },
   {
     text: 'fish',
+    color: 'blue'
   },
   {
     text: 'carrot',
+    color: 'yellow'
   },
   {
     text: 'apple-whole',
+    color: 'yellow'
   },
   {
     text: 'lemon',
+    color: 'yellow'
   },
   {
     text: 'pepper-hot',
+    color: 'yellow'
   },
   {
     text: 'user-astronaut',
+    color: 'violet'
   },
   {
     text: 'user-graduate',
+    color: 'violet'
   },
   {
     text: 'user-ninja',
+    color: 'violet'
   },
   {
     text: 'user-secret',
+    color: 'violet'
   }
   
 ]
 
 
 const outputContainer = document.getElementById('_conatiner');
+const selectArea =document.querySelector('.sd-select');
+
 
 //funzione stampa
 const cardPrinter = () =>{
@@ -98,4 +115,29 @@ const getCard = (object) => {
   outputContainer.innerHTML += cardElement;
 }
 
+const animalCard = cardContainer.filter((card)=> card.color === 'blue');
+console.log(animalCard, 'card animali');
+
+const foodCard = cardContainer.filter((card)=> card.color === 'yellow');
+console.log(foodCard, 'food card');
+
+const userCard = cardContainer.filter((card)=> card.color === 'violet');
+console.log(userCard, 'user card');
+
 cardPrinter();
+
+
+
+
+//funzione che raccoglie info utente
+function selectTipeInput (container){
+
+  selectArea.addEventListener('change', function(){
+    console.log(this.value);
+  
+  })
+  
+
+}
+
+selectTipeInput (cardContainer);
