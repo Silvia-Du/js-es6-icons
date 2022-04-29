@@ -48,3 +48,15 @@ main{
 .card i{
   font-size: 2.5rem;
 }
+
+#violet{
+  color: #800080;
+}
+
+#blue{
+  color: #0000ff;
+}
+
+#yellow{
+  color: #ffa500;
+}

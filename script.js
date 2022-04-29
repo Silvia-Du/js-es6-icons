@@ -84,60 +84,61 @@ const cardContainer =[
 
 const outputContainer = document.getElementById('_conatiner');
 const selectArea =document.querySelector('.sd-select');
+const cardCollection =[];
 
 
 //funzione stampa
-const cardPrinter = () =>{
+const cardPrinter = (container) =>{
   outputContainer.innerHTML = '';
-  cardContainer.forEach(card => {
+  
+  container.forEach(card => {
+
     getCard(card);
     
-
   })
 }
 
 //funzione crea card
 const getCard = (object) => {
 
-  const {text}= object;
+  const {text, color}= object;
 
   const cardElement =`
     <div class="col my-3">
       <div class="card d-flex flex-column align-items-center py-4">
         <div class="content d-flex flex-column align-items-center">
-          <i class="fa-solid fa-${text} mb-2"></i>
+          <i id= "${color}"class="fa-solid fa-${text} mb-2"></i>
           <p class="mb-0">${text}</p>
         </div>
       </div>
     </div>
   `;
-
+  cardCollection.push(cardElement);
   outputContainer.innerHTML += cardElement;
+
 }
-
-const animalCard = cardContainer.filter((card)=> card.color === 'blue');
-console.log(animalCard, 'card animali');
-
-const foodCard = cardContainer.filter((card)=> card.color === 'yellow');
-console.log(foodCard, 'food card');
-
-const userCard = cardContainer.filter((card)=> card.color === 'violet');
-console.log(userCard, 'user card');
-
-cardPrinter();
-
-
 
 
 //funzione che raccoglie info utente
-function selectTipeInput (container){
 
   selectArea.addEventListener('change', function(){
-    console.log(this.value);
-  
+
+    let container;
+    color = this.value;
+
+    if(color === 'blue'){
+      container = cardContainer.filter((card)=> card.color === 'blue');
+    }else if(color ==='yellow'){
+      container = cardContainer.filter((card)=> card.color === 'yellow');
+    }else if(color ==='violet'){
+      container = cardContainer.filter((card)=> card.color === 'violet');
+    }else{
+      container = cardContainer;
+    }
+
+    cardPrinter(container);
   })
-  
 
-}
 
-selectTipeInput (cardContainer);
+
+
