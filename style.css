@@ -1,18 +1,50 @@
+/* grigio sfondo : #dddddd
+blu icone : #0000ff
+giallo icone :#ffa500
+viola icone : #800080
+sfondo card : #f5f5f5 */
+
 .debug{
   border: 1px solid black;
   background-color: rgba(137, 43, 226, 0.486);
 }
 
 header .top{
+  height: 60px;
   background-color: white;
 }
 
 header .bottom{
+  height: 60px;
   background-color: #29b1dd;
+  font-size: 1.4rem;
+  color: white;
+  /* line-height: 60px; */
 }
 
-/* grigio sfondo : #dddddd
-blu icone : #0000ff
-giallo icone :#ffa500
-viola icone : #800080
-sfondo card : #f5f5f5 */
+#logo{
+  color: #29b1dd;
+}
+
+.sd-select{
+  min-width: 150px;
+}
+
+/* main */
+
+main{
+  min-height: calc( 100vh - 120px);
+  background-color: #dddddd;
+}
+
+.card{
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgb(95, 89, 89);
+  background-color: #f5f5f5;
+}
+
+.card i{
+  font-size: 2.5rem;
+}

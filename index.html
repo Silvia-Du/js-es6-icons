@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- fontawesom -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
    <!-- bootstrap -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
    <!-- /bootstrap -->
@@ -12,15 +14,54 @@
 </head>
 <body>
 
+  <!-- Header -->
   <header>
-    <div class="top">
-      <div class="container">T</div>
+    <div class="top d-flex align-items-center">
+      <div class="container">
+        <h2 id="logo">Logo</h2>
+      </div>
     </div>
-    <div class="bottom">
-      <div class="conatiner">B</div>
+    <div class="bottom d-flex justify-content-center align-items-center">
+      <div class="container d-flex align-items-center justify-content-center">
+        
+          <p class="text-uppercase mb-0">Filtra per tipo</p>
+          <select class=" sd-select form-control-sm ms-3">
+            <option>All</option>
+            <option>Animal</option>
+            <option>Vegetable</option>
+            <option>User</option>
+          </select>  
+      </div>
     </div>
-
   </header>
+
+  <!-- main -->
+
+  <main>
+    <div class="container card-container">
+      <div class="row debug row-cols-2 row-cols-md-4 row-cols-lg-5">
+
+        <div class="col my-3">
+          <div class="card d-flex flex-column align-items-center py-4">
+            <div class="content">
+              <i class="fa-solid fa-hippo"></i>
+              <p class="mb-0">Hippo</p>
+            </div>
+          </div>
+        </div>
+
+        
+        
+
+        
+
+
+
+
+      </div>
+      
+    </div>
+  </main>
 
 
 
