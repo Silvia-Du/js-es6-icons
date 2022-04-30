@@ -9,68 +9,120 @@
 */
 
 const cardContainer =[
-  {
-    text: 'cat',
-    color: 'blue' 
-  },
-  {
-    text: 'crow',
-    color: 'blue'
-  },
-  {
-    text: 'dog',
-    color: 'blue'
-  },
-  {
-    text: 'dragon',
-    color: 'blue'
-  },
-  {
-    text: 'horse',
-    color: 'blue'
-  },
-  {
-    text: 'hippo',
-    color: 'blue'
-  },
-  {
-    text: 'fish',
-    color: 'blue'
-  },
-  {
-    text: 'carrot',
-    color: 'yellow'
-  },
-  {
-    text: 'apple-whole',
-    color: 'yellow'
-  },
-  {
-    text: 'lemon',
-    color: 'yellow'
-  },
-  {
-    text: 'pepper-hot',
-    color: 'yellow'
-  },
-  {
-    text: 'user-astronaut',
-    color: 'violet'
-  },
-  {
-    text: 'user-graduate',
-    color: 'violet'
-  },
-  {
-    text: 'user-ninja',
-    color: 'violet'
-  },
-  {
-    text: 'user-secret',
-    color: 'violet'
-  }
-  
-]
+	{
+		name: 'cat',
+		prefix: 'fa-',
+		type: 'animal',
+		family: 'fas',
+		color: 'orange'
+	},
+	{
+		name: 'crow',
+		prefix: 'fa-',
+		type: 'animal',
+		family: 'fas',
+		color: 'orange'
+	},
+	{
+		name: 'dog',
+		prefix: 'fa-',
+		type: 'animal',
+		family: 'fas',
+		color: 'orange'
+	},
+	{
+		name: 'dove',
+		prefix: 'fa-',
+		type: 'animal',
+		family: 'fas',
+		color: 'orange'
+	},
+	{
+		name: 'dragon',
+		prefix: 'fa-',
+		type: 'animal',
+		family: 'fas',
+		color: 'orange'
+	},
+	{
+		name: 'horse',
+		prefix: 'fa-',
+		type: 'animal',
+		family: 'fas',
+		color: 'orange'
+	},
+	{
+		name: 'hippo',
+		prefix: 'fa-',
+		type: 'animal',
+		family: 'fas',
+		color: 'orange'
+	},
+	{
+		name: 'fish',
+		prefix: 'fa-',
+		type: 'animal',
+		family: 'fas',
+		color: 'orange'
+	},
+	{
+		name: 'carrot',
+		prefix: 'fa-',
+		type: 'vegetable',
+		family: 'fas',
+		color: 'green'
+	},
+	{
+		name: 'apple-alt',
+		prefix: 'fa-',
+		type: 'vegetable',
+		family: 'fas',
+		color: 'green'
+	},
+	{
+		name: 'lemon',
+		prefix: 'fa-',
+		type: 'vegetable',
+		family: 'fas',
+		color: 'green'
+	},
+	{
+		name: 'pepper-hot',
+		prefix: 'fa-',
+		type: 'vegetable',
+		family: 'fas',
+		color: 'green'
+	},
+	{
+		name: 'user-astronaut',
+		prefix: 'fa-',
+		type: 'user',
+		family: 'fas',
+		color: 'blue'
+	},
+	{
+		name: 'user-graduate',
+		prefix: 'fa-',
+		type: 'user',
+		family: 'fas',
+		color: 'blue'
+	},
+	{
+		name: 'user-ninja',
+		prefix: 'fa-',
+		type: 'user',
+		family: 'fas',
+		color: 'blue'
+	},
+	{
+		name: 'user-secret',
+		prefix: 'fa-',
+		type: 'user',
+		family: 'fas',
+		color: 'blue'
+	}
+];
+
 
 
 const outputContainer = document.getElementById('_conatiner');
@@ -89,19 +141,25 @@ const cardPrinter = (container) =>{
   })
 }
 
-
+/*
+	name: 'lemon',
+		prefix: 'fa-',
+		type: 'vegetable',
+		family: 'fas',
+		color: 'green
+*/
 
 //funzione crea card
 const getCard = (object) => {
 
-  const {text, color}= object;
+  const {name, prefix, tyle, family, color}= object;
 
   const cardElement =`
     <div class="col my-3">
       <div class="card d-flex flex-column align-items-center py-4">
         <div class="content d-flex flex-column align-items-center">
-          <i id= "${color}" class="fa-solid fa-${text} mb-2"></i>
-          <p class="mb-0">${text}</p>
+          <i id= "${color}" class="fa-solid fa-${name} mb-2"></i>
+          <p class="mb-0">${name}</p>
         </div>
       </div>
     </div>
@@ -118,20 +176,15 @@ cardPrinter(cardContainer);
 //funzione che raccoglie info utente
 
   selectArea.addEventListener('change', function(){
-    let color;
+    
     let container;
-    color = this.value;
+    const color = this.value;
 
-    if(color === 'blue'){
-      container = cardContainer.filter((card)=> card.color === 'blue');
-    }else if(color ==='yellow'){
-      container = cardContainer.filter((card)=> card.color === 'yellow');
-    }else if(color ==='violet'){
-      container = cardContainer.filter((card)=> card.color === 'violet');
-    }else{
-      container = cardContainer;
-    }
-
+    (color === 'blue')? container = cardContainer.filter((card)=> card.color === 'blue'): false;
+    (color === 'orange')? container = cardContainer.filter((card)=> card.color === 'orange'): false;
+    (color === 'green')? container = cardContainer.filter((card)=> card.color === 'green'): false;
+    (color === 'all')? container = cardContainer: false;
+    
     cardPrinter(container);
   })
 
@@ -140,30 +193,25 @@ cardPrinter(cardContainer);
     return Math.floor(Math.random() * (max - min +1) + min);
   }
 
-  // const lettersNumbers =['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
- const lettersNum =['0', '1', '2', '3', 'A', 'B', 'C', 'D', 'E', 'F'];
+  const lettersNum =['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+ 
+let newColor ='#';
 
-for( let i =0; i< lettersNum.length; i++ ){
-
-  const estract = randomNum( 0 , lettersNum.length);
-  console.log('elemento delarray--->',lettersNum[estract], 'num random estratto',estract);
-
-}
-
-// 6 elementi random da tutto l'array, 
-
-  // function getFantasyColor(){
-
-  // }
+lettersNum.forEach(element => { if(newColor.length <= 6) {
+    const estract = randomNum( 0 , lettersNum.length-1);
+    newColor += lettersNum[estract];
+  }
+})
+  
 
 
-    //generare una stringa di 7 elementi 
-  //   il primo deve essere sempre #
-  //generare una stringa di 6 elementi 
 
-  //   gli altri sei, per ogni posizione possono essere o un numero o una lettera.
-  //   ogni posizione deve essere occupata da un elemento randomico casuale, non univoco nella stringa.
-  // = devo estrarre 6 elementi a caso(da un contenitore immagino) e metterli insieme in una stringa...pusharli in un nuovo luogo..un array?
+console.log(newColor);
+
+  function getFantasyColor(){
+
+  }
+
 
 
 
