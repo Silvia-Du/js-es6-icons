@@ -126,9 +126,21 @@ const cardContainer =[
 const lettersNum =['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
 
 const outputContainer = document.getElementById('_conatiner');
-const selectArea =document.querySelector('.sd-select');
 
+/**
+ * GEnera numero randomicamente da min a max
+ * @param {num} min 
+ * @param {num} max 
+ * @returns 
+ */
+const randomNum = ((min, max)=>  Math.floor(Math.random() * (max - min +1) + min))
 
+//funzione genera colore random
+/**
+ * prende come valore un array di strighe e restitusce una stringa colore esadecimale
+ * @param {string} array 
+ * @returns 
+ */
 const getFantasyColor =(array) =>{ 
   let newColor ='#';
 
@@ -168,27 +180,39 @@ const getCard = (object) => {
 
 cardPrinter(cardContainer);
 
-//funzione che raccoglie info utente
-  selectArea.addEventListener('change', function(){
+
+//funzione che raccoglie info utente & restituisce un'array di elementi selezionati
+document.querySelector('.sd-select').addEventListener('change', function(){
     
-    let container;
-    const color = this.value;
-    (color === 'all')? container = cardContainer: false;
-    (color === 'blue')? container = cardContainer.filter((card)=> card.type === 'user'): false;
-    (color === 'orange')? container = cardContainer.filter((card)=> card.type === 'animal'): false;
-    (color === 'green')? container = cardContainer.filter((card)=> card.type === 'vegetable'): false;
+  let container;
+  const select = this.value;
+  (select === 'all')? container = cardContainer: false;
+  (select === 'user')? container = cardContainer.filter((card)=> card.type === 'user'): false;
+  (select === 'animal')? container = cardContainer.filter((card)=> card.type === 'animal'): false;
+  (select === 'vegetable')? container = cardContainer.filter((card)=> card.type === 'vegetable'): false;
     
-    cardPrinter(container);
-  })
+  cardPrinter(container);
+})
+
+const cardType = ['all'];
+cardContainer.forEach((card)=>{ (cardType.includes(card.type))?'': cardType.push(card.type) })
+
+
+for(let i=0; i< cardType.length; i++){
+  
+  document.querySelector('select').innerHTML +=`
+  <option value="${cardType[i]}" id="${cardType[i]}">${cardType[i]}</option>
+`
+}
 
 
 
 
-  function randomNum( min , max ){
-    return Math.floor(Math.random() * (max - min +1) + min);
-  }
 
- 
+
+
+
+
 
 
 
