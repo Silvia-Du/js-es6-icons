@@ -1,21 +1,12 @@
 /*
-//1
-// creare array con oggetto card con icona e testo
-//creare funzione crea card
-//creare funzione stampa card
-
-**Milestone 2**FATTO
-Ciascuna icona ha una proprietà “color”: utilizzare questa proprietà per visualizzare le icone del colore corrispondente.
-**Milestone 3**
-Aggiungere alla pagina una select in cui le options corrispondono ai vari tipi di icone *(animal, vegetable, user)*. Quando l’utente seleziona un tipo dalla select, visualizzare solamente le icone corrispondenti.
 **BONUS**
 1- modificare la struttura dati fornita e valorizzare la proprietà “color” in modo dinamico: generare in modo casuale un codice colore, sapendo che la notazione esadecimale è formata dal simbolo “#” seguito da 6 caratteri alfanumerici compresi tra 0 e 9 e A e F.
+
+
+
+
 2- popolare le options della select della milestone 3 dinamicamente.
 */
-
-
-
-
 
 const cardContainer =[
   {
@@ -98,6 +89,8 @@ const cardPrinter = (container) =>{
   })
 }
 
+
+
 //funzione crea card
 const getCard = (object) => {
 
@@ -107,7 +100,7 @@ const getCard = (object) => {
     <div class="col my-3">
       <div class="card d-flex flex-column align-items-center py-4">
         <div class="content d-flex flex-column align-items-center">
-          <i id= "${color}"class="fa-solid fa-${text} mb-2"></i>
+          <i id= "${color}" class="fa-solid fa-${text} mb-2"></i>
           <p class="mb-0">${text}</p>
         </div>
       </div>
@@ -118,11 +111,14 @@ const getCard = (object) => {
 
 }
 
+cardPrinter(cardContainer);
+
+
 
 //funzione che raccoglie info utente
 
   selectArea.addEventListener('change', function(){
-
+    let color;
     let container;
     color = this.value;
 
@@ -139,6 +135,35 @@ const getCard = (object) => {
     cardPrinter(container);
   })
 
+
+  function randomNum( min , max ){
+    return Math.floor(Math.random() * (max - min +1) + min);
+  }
+
+  // const lettersNumbers =['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+ const lettersNum =['0', '1', '2', '3', 'A', 'B', 'C', 'D', 'E', 'F'];
+
+for( let i =0; i< lettersNum.length; i++ ){
+
+  const estract = randomNum( 0 , lettersNum.length);
+  console.log('elemento delarray--->',lettersNum[estract], 'num random estratto',estract);
+
+}
+
+// 6 elementi random da tutto l'array, 
+
+  // function getFantasyColor(){
+
+  // }
+
+
+    //generare una stringa di 7 elementi 
+  //   il primo deve essere sempre #
+  //generare una stringa di 6 elementi 
+
+  //   gli altri sei, per ogni posizione possono essere o un numero o una lettera.
+  //   ogni posizione deve essere occupata da un elemento randomico casuale, non univoco nella stringa.
+  // = devo estrarre 6 elementi a caso(da un contenitore immagino) e metterli insieme in una stringa...pusharli in un nuovo luogo..un array?
 
 
 
