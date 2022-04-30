@@ -123,94 +123,79 @@ const cardContainer =[
 	}
 ];
 
-
+const lettersNum =['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
 
 const outputContainer = document.getElementById('_conatiner');
 const selectArea =document.querySelector('.sd-select');
-const cardCollection =[];
 
 
-//funzione stampa
-const cardPrinter = (container) =>{
-  outputContainer.innerHTML = '';
-  
-  container.forEach(card => {
+const getFantasyColor =(array) =>{ 
+  let newColor ='#';
 
-    getCard(card);
-    
+  array.forEach(element => { if(newColor.length <= 6) {
+    const estract = randomNum( 0 , lettersNum.length-1);
+    newColor += lettersNum[estract];
+    }
   })
+  return newColor;
 }
 
-/*
-	name: 'lemon',
-		prefix: 'fa-',
-		type: 'vegetable',
-		family: 'fas',
-		color: 'green
-*/
+//funzione stampa
+const cardPrinter = (container) =>{ 
+
+  outputContainer.innerHTML = '';
+  container.forEach(card => { getCard(card) })
+}
 
 //funzione crea card
-const getCard = (object) => {
-
-  const {name, prefix, tyle, family, color}= object;
-
-  const cardElement =`
+const getCard = (object) => { 
+  
+  const {name, prefix, type}= object;
+  
+  // console.log(getFantasyColor(lettersNum));
+  outputContainer.innerHTML +=
+  `
     <div class="col my-3">
       <div class="card d-flex flex-column align-items-center py-4">
         <div class="content d-flex flex-column align-items-center">
-          <i id= "${color}" class="fa-solid fa-${name} mb-2"></i>
+          <i id= "${type}" class="${prefix}solid ${prefix}${name} mb-2" style="color: ${getFantasyColor(lettersNum)};"></i>
           <p class="mb-0">${name}</p>
         </div>
       </div>
     </div>
-  `;
-  cardCollection.push(cardElement);
-  outputContainer.innerHTML += cardElement;
-
+  `; 
 }
 
 cardPrinter(cardContainer);
 
-
-
 //funzione che raccoglie info utente
-
   selectArea.addEventListener('change', function(){
     
     let container;
     const color = this.value;
-
-    (color === 'blue')? container = cardContainer.filter((card)=> card.color === 'blue'): false;
-    (color === 'orange')? container = cardContainer.filter((card)=> card.color === 'orange'): false;
-    (color === 'green')? container = cardContainer.filter((card)=> card.color === 'green'): false;
     (color === 'all')? container = cardContainer: false;
+    (color === 'blue')? container = cardContainer.filter((card)=> card.type === 'user'): false;
+    (color === 'orange')? container = cardContainer.filter((card)=> card.type === 'animal'): false;
+    (color === 'green')? container = cardContainer.filter((card)=> card.type === 'vegetable'): false;
     
     cardPrinter(container);
   })
+
+
 
 
   function randomNum( min , max ){
     return Math.floor(Math.random() * (max - min +1) + min);
   }
 
-  const lettersNum =['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
  
-let newColor ='#';
 
-lettersNum.forEach(element => { if(newColor.length <= 6) {
-    const estract = randomNum( 0 , lettersNum.length-1);
-    newColor += lettersNum[estract];
-  }
-})
+
+
   
 
 
 
-console.log(newColor);
-
-  function getFantasyColor(){
-
-  }
 
 
 
