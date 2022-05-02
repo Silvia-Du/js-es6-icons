@@ -1,10 +1,6 @@
 /*
 **BONUS**
 1- modificare la struttura dati fornita e valorizzare la proprietà “color” in modo dinamico: generare in modo casuale un codice colore, sapendo che la notazione esadecimale è formata dal simbolo “#” seguito da 6 caratteri alfanumerici compresi tra 0 e 9 e A e F.
-
-
-
-
 2- popolare le options della select della milestone 3 dinamicamente.
 */
 
@@ -123,8 +119,6 @@ const cardContainer =[
 	}
 ];
 
-const lettersNum =['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
-
 const outputContainer = document.getElementById('_conatiner');
 
 /**
@@ -141,10 +135,11 @@ const randomNum = ((min, max)=>  Math.floor(Math.random() * (max - min +1) + min
  * @param {string} array 
  * @returns 
  */
-const getFantasyColor =(array) =>{ 
+const getFantasyColor =() =>{ 
+  const lettersNum =['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
   let newColor ='#';
 
-  array.forEach(element => { if(newColor.length <= 6) {
+  lettersNum.forEach(element => { if(newColor.length <= 6) {
     const estract = randomNum( 0 , lettersNum.length-1);
     newColor += lettersNum[estract];
     }
@@ -170,7 +165,7 @@ const getCard = (object) => {
     <div class="col my-3">
       <div class="card d-flex flex-column align-items-center py-4">
         <div class="content d-flex flex-column align-items-center">
-          <i id= "${type}" class="${prefix}solid ${prefix}${name} mb-2" style="color: ${getFantasyColor(lettersNum)};"></i>
+          <i id= "${type}" class="${prefix}solid ${prefix}${name} mb-2" style="color: ${getFantasyColor()};"></i>
           <p class="mb-0">${name}</p>
         </div>
       </div>
@@ -197,13 +192,9 @@ document.querySelector('.sd-select').addEventListener('change', function(){
 const cardType = ['all'];
 cardContainer.forEach((card)=>{ (cardType.includes(card.type))?'': cardType.push(card.type) })
 
-
-for(let i=0; i< cardType.length; i++){
-  
-  document.querySelector('select').innerHTML +=`
-  <option value="${cardType[i]}" id="${cardType[i]}">${cardType[i]}</option>
-`
-}
+cardType.forEach((card, i)=>{ 
+	document.querySelector('select').innerHTML +=` <option value="${cardType[i]}" id="${cardType[i]}">${cardType[i]}</option>` 
+})
 
 
 
